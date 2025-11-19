@@ -13,6 +13,7 @@ fun main() {
     val textoDecifrado = decifrarDeTeusPulos(textoCifrado)
     val textoComQuebras = textoDecifrado.replace("@", "\n")
     val palindromos = encontrarPalindromos(textoComQuebras)
+    val numeroCaracteres = textoComQuebras.length
 
     println("Texto cifrado:")
     println(textoCifrado)
@@ -20,6 +21,8 @@ fun main() {
     println(textoComQuebras)
     println("\nPalíndromos encontrados:")
     println(palindromos)
+    println("\nNúmero de caracteres do texto decifrado:")
+    println(numeroCaracteres)
 }
 
 fun decifrarDeTeusPulos(texto: String): String {
