@@ -13,12 +13,11 @@ fun main() {
     val textoComQuebras = textoDecifrado.replace("@", "\n")
     val palindromos = encontrarPalindromos(textoComQuebras)
 
-    val numeroCaracteres =
-    val quantidadePalavras =
-
     println("Texto cifrado:")
     println(textoCifrado)
-    println("Palíndromos encontrados:")
+    println("\nTexto decifrado:")
+    println(textoComQuebras)
+    println("\nPalíndromos encontrados:")
     println(palindromos)
 }
 
@@ -26,8 +25,7 @@ fun decifrarDeTeusPulos(texto: String): String {
     val r = StringBuilder()
     for (i in texto.indices) {
         val chave = if (i % 5 == 0) 8 else 16
-        val novo = texto[i].code - chave
-        r.append(novo.toChar())
+        r.append((texto[i].code - chave).toChar())
     }
     return r.toString()
 }
@@ -37,18 +35,7 @@ fun encontrarPalindromos(texto: String): List<String> {
     val lista = mutableListOf<String>()
     for (p in palavras) {
         val limpo = p.lowercase().filter { it.isLetter() }
-        if (limpo.length > 1 && ehPalindromo(limpo)) lista.add(p)
+        if (limpo.length > 1 && limpo == limpo.reversed()) lista.add(p)
     }
     return lista
-}
-
-fun ehPalindromo(p: String): Boolean {
-    var i = 0
-    var j = p.length - 1
-    while (i < j) {
-        if (p[i] != p[j]) return false
-        i++
-        j--
-    }
-    return true
 }
